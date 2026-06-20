@@ -12,12 +12,12 @@ window.DENBA_I18N = {
     /* ── index.html：ブランドステートメント ── */
     brand_eyebrow: 'AEB TECHNOLOGY',
     brand_h2: '分子設計から、<em>究極の浸透</em>へ。',
-    brand_p: 'DENBAが独自開発した分子コントロール技術により、全成分をナノレベルまで微粒子化。通常の4倍速で角層まで届けます（自社比較）。',
+    brand_p: 'DENBAが独自開発した分子コントロール技術により、全成分をナノレベルまで微粒子化。通常の1.8倍速で角層まで届けます（自社比較）。',
 
     /* ── index.html：TECHNOLOGYセクション ── */
     tech_eyebrow: 'DENBA MOLECULAR CONTROL TECHNOLOGY',
     tech_title: '細胞環境を、<br>分子レベルで整える。',
-    tech_desc: 'DENBA独自の電位制御技術が水分子クラスターを3〜5個まで細分化。全成分の浸透力を通常の4倍に高め、有効成分を角層まで届けます（自社比較）。',
+    tech_desc: 'DENBA独自の電位制御技術が水分子クラスターを3〜5個まで細分化。全成分の浸透力を通常の1.8倍に高め、有効成分を角層まで届けます（自社比較）。',
     tech_link: '技術の詳細を見る →',
 
     /* ── index.html：THREE ESSENTIALSセクション ── */
@@ -101,7 +101,7 @@ window.DENBA_I18N = {
     /* ── technology.html：Section 03 ── */
     s03_eyebrow: 'Section 03 — Scientific Evidence',
     s03_title: '科学的エビデンス',
-    s03_desc: 'DENBA処理による浸透力改善は、自社エビデンスで通常比4倍速を確認。製造プロセスに組み込まれた独自技術が、成分の届き方を根本から変えます。',
+    s03_desc: 'DENBA処理による浸透力改善は、自社エビデンスで通常比1.8倍速を確認。製造プロセスに組み込まれた独自技術が、成分の届き方を根本から変えます。',
 
     /* ── technology.html：Section 04 ── */
     s04_eyebrow: 'Section 04 — Patent & IP',
@@ -116,7 +116,7 @@ window.DENBA_I18N = {
     /* ── technology.html：Section 06 ── */
     s06_eyebrow: 'Section 06 — Application to Skincare',
     s06_title: 'スキンケアへの応用',
-    s06_desc: '食品・医療で実証されたDENBA技術をスキンケア製造プロセスに応用。全成分をDENBA照射環境で処理し、通常の4倍の浸透力で届けます。',
+    s06_desc: '食品・医療で実証されたDENBA技術をスキンケア製造プロセスに応用。全成分をDENBA照射環境で処理し、通常の1.8倍の浸透力で届けます。',
 
     /* ── technology.html：Tech nav ── */
     tnav_01: 'DENBAとは',
@@ -140,12 +140,12 @@ window.DENBA_I18N = {
     /* ── index.html：ブランドステートメント ── */
     brand_eyebrow: 'AEB TECHNOLOGY',
     brand_h2: 'From Molecular Design<br>to <em>Ultimate Delivery</em>.',
-    brand_p: "DENBA's proprietary molecular control technology reduces all ingredients to the nano level, delivering them to the deep layers of skin at 4× the normal speed.",
+    brand_p: "DENBA's proprietary molecular control technology reduces all ingredients to the nano level, delivering them to the deep layers of skin at 1.8× the normal speed.",
 
     /* ── index.html：TECHNOLOGYセクション ── */
     tech_eyebrow: 'DENBA MOLECULAR CONTROL TECHNOLOGY',
     tech_title: 'Optimizing the Cellular<br>Environment at the Molecular Level.',
-    tech_desc: "DENBA's proprietary electrostatic control technology reduces water molecule clusters to 3–5 molecules, enhancing penetration of all ingredients by 4× for deep delivery into the stratum corneum.",
+    tech_desc: "DENBA's proprietary electrostatic control technology reduces water molecule clusters to 3–5 molecules, enhancing penetration of all ingredients by 1.8× for deep delivery into the stratum corneum.",
     tech_link: 'Learn more about the technology →',
 
     /* ── index.html：THREE ESSENTIALSセクション ── */
@@ -229,7 +229,7 @@ window.DENBA_I18N = {
     /* ── technology.html：Section 03 ── */
     s03_eyebrow: 'Section 03 — Scientific Evidence',
     s03_title: 'Scientific Evidence',
-    s03_desc: 'DENBA processing has confirmed a 4× improvement in penetration speed compared to standard methods through in-house evidence. Our proprietary technology integrated into the manufacturing process fundamentally changes how ingredients are delivered.',
+    s03_desc: 'DENBA processing has confirmed a 1.8× improvement in penetration speed compared to standard methods through in-house evidence. Our proprietary technology integrated into the manufacturing process fundamentally changes how ingredients are delivered.',
 
     /* ── technology.html：Section 04 ── */
     s04_eyebrow: 'Section 04 — Patent & IP',
@@ -244,7 +244,7 @@ window.DENBA_I18N = {
     /* ── technology.html：Section 06 ── */
     s06_eyebrow: 'Section 06 — Application to Skincare',
     s06_title: 'Application to Skincare',
-    s06_desc: 'DENBA technology proven in food and medical fields is applied to the skincare manufacturing process. All ingredients are processed in a DENBA irradiation environment, delivering them with 4× normal penetration power.',
+    s06_desc: 'DENBA technology proven in food and medical fields is applied to the skincare manufacturing process. All ingredients are processed in a DENBA irradiation environment, delivering them with 1.8× normal penetration power.',
 
     /* ── technology.html：Tech nav ── */
     tnav_01: 'What is DENBA',
@@ -267,12 +267,12 @@ window.DENBA_I18N = {
     /* ── index.html：ブランドステートメント ── */
     brand_eyebrow: 'AEB 技术',
     brand_h2: '从分子设计，<br>迈向<em>极致渗透</em>。',
-    brand_p: 'DENBA独自研发的分子控制技术，将全成分微粒化至纳米级别，以普通速度4倍的效率渗透至肌肤深层。',
+    brand_p: 'DENBA独自研发的分子控制技术，将全成分微粒化至纳米级别，以普通速度1.8倍的效率渗透至肌肤深层。',
 
     /* ── index.html：TECHNOLOGYセクション ── */
     tech_eyebrow: 'DENBA 分子控制技术',
     tech_title: '在分子层面，<br>优化细胞环境。',
-    tech_desc: 'DENBA独有的电位控制技术将水分子团细分为3至5个分子，使所有成分的渗透力提升至普通的4倍，将有效成分送达角质层深处。',
+    tech_desc: 'DENBA独有的电位控制技术将水分子团细分为3至5个分子，使所有成分的渗透力提升至普通的1.8倍，将有效成分送达角质层深处。',
     tech_link: '了解更多技术详情 →',
 
     /* ── index.html：THREE ESSENTIALSセクション ── */
@@ -356,7 +356,7 @@ window.DENBA_I18N = {
     /* ── technology.html：Section 03 ── */
     s03_eyebrow: 'Section 03 — 科学证据',
     s03_title: '科学证据',
-    s03_desc: 'DENBA处理对渗透力的改善已通过内部实证确认，速度为普通方法的4倍。融入制造工艺的独有技术，从根本上改变了成分的渗透方式。',
+    s03_desc: 'DENBA处理对渗透力的改善已通过内部实证确认，速度为普通方法的1.8倍。融入制造工艺的独有技术，从根本上改变了成分的渗透方式。',
 
     /* ── technology.html：Section 04 ── */
     s04_eyebrow: 'Section 04 — 专利与知识产权',
@@ -371,7 +371,7 @@ window.DENBA_I18N = {
     /* ── technology.html：Section 06 ── */
     s06_eyebrow: 'Section 06 — 护肤领域的应用',
     s06_title: '护肤领域的应用',
-    s06_desc: '将在食品和医疗领域得到验证的DENBA技术应用于护肤品制造工艺。所有成分在DENBA照射环境中处理，以普通4倍的渗透力送达肌肤。',
+    s06_desc: '将在食品和医疗领域得到验证的DENBA技术应用于护肤品制造工艺。所有成分在DENBA照射环境中处理，以普通1.8倍的渗透力送达肌肤。',
 
     /* ── technology.html：Tech nav ── */
     tnav_01: 'DENBA简介',
