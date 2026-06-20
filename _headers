@@ -1,0 +1,6 @@
+/*
+  X-Content-Type-Options: nosniff
+
+/images/*.mp4
+  Content-Type: video/mp4
+  Accept-Ranges: bytes

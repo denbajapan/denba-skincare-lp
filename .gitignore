@@ -1,0 +1,5 @@
+.DS_Store
+.netlify-token
+*.zip
+.claude/
+images/*.png
