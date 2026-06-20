@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology | DENBA Skincare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C9A961;
+      --gold-light: #E8D5A3;
+      --gold-pale: #F5EDD8;
+      --bg: #FDFBF8;
+      --bg-dark: #1A1712;
+      --text: #1A1A1A;
+      --text-mid: #5A5550;
+      --text-light: #9A9490;
+      --white: #FFFFFF;
+      --serif: 'Cormorant Garamond', 'Noto Serif JP', serif;
+      --sans: 'Noto Sans JP', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.8; overflow-x: hidden; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(26,23,18,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,169,97,0.15);
+    }
+    .logo { font-family: var(--serif); font-size: 22px; font-weight: 300; letter-spacing: 0.25em; color: var(--white); text-decoration: none; }
+    .logo span { color: var(--gold); }
+    nav { display: flex; gap: 36px; }
+    nav a { font-size: 12px; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); text-decoration: none; text-transform: uppercase; transition: color 0.3s; }
+    nav a:hover, nav a.active { color: var(--gold); }
+    .btn-header { font-size: 11px; letter-spacing: 0.2em; padding: 10px 24px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; text-transform: uppercase; transition: all 0.3s; }
+    .btn-header:hover { background: var(--gold); color: var(--bg-dark); }
+
+    /* ── TECH NAV ── */
+    .tech-nav {
+      position: sticky; top: 62px; z-index: 90;
+      background: rgba(26,23,18,0.97);
+      display: flex; justify-content: center; gap: 0;
+      border-bottom: 1px solid rgba(201,169,97,0.12);
+    }
+    .tech-nav a {
+      padding: 16px 28px;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      border-bottom: 2px solid transparent; transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .tech-nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── HERO ── */
+    .tech-hero {
+      min-height: 100vh;
+      background: var(--bg-dark);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,169,97,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,169,97,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,169,97,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .tech-hero .eyebrow {
+      font-size: 10px; letter-spacing: 0.5em; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 24px; position: relative;
+    }
+    .tech-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 300; color: var(--white);
+      letter-spacing: 0.1em; line-height: 1.1;
+      margin-bottom: 32px; position: relative;
+    }
+    .tech-hero h1 span { color: var(--gold); }
+    .hero-divider {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      margin: 0 auto 32px; position: relative;
+    }
+    .tech-hero .hero-sub {
+      font-size: 16px; color: rgba(255,255,255,0.55);
+      line-height: 2.2; max-width: 580px; margin: 0 auto;
+      letter-spacing: 0.05em; position: relative;
+    }
+    .hero-badges {
+      display: flex; gap: 12px; justify-content: center;
+      flex-wrap: wrap; margin-top: 48px; position: relative;
+    }
+    .hero-badge {
+      font-size: 10px; letter-spacing: 0.25em;
+      padding: 8px 18px; border: 1px solid rgba(201,169,97,0.3);
+      color: rgba(201,169,97,0.8); text-transform: uppercase;
+    }
+
+    /* ── SECTION BASE ── */
+    .sec { padding: 120px 48px; }
+    .sec-inner { max-width: 1160px; margin: 0 auto; }
+    .sec-label {
+      font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px; display: block;
+    }
+    .sec-title {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300; letter-spacing: 0.06em;
+      line-height: 1.3; margin-bottom: 24px;
+    }
+    .gold-line { width: 48px; height: 1px; background: var(--gold); margin-bottom: 32px; }
+    .sec-lead {
+      font-size: 16px; color: var(--text-mid); line-height: 2.2;
+      max-width: 700px; margin-bottom: 60px;
+    }
+
+    /* ── 01 WHAT IS DENBA ── */
+    .what-is { background: var(--bg-dark); }
+    .what-is .sec-title { color: var(--white); }
+    .what-is .sec-lead { color: rgba(255,255,255,0.6); }
+    .what-is .sec-label { color: var(--gold); }
+    .what-is .gold-line { background: var(--gold); }
+
+    .aeb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+    .aeb-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,169,97,0.12);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s;
+    }
+    .aeb-card:hover { background: rgba(201,169,97,0.05); }
+    .aeb-letter {
+      font-family: var(--serif);
+      font-size: 100px; font-weight: 300;
+      color: rgba(201,169,97,0.08);
+      position: absolute; top: -10px; right: 16px;
+      line-height: 1; pointer-events: none;
+      transition: color 0.4s;
+    }
+    .aeb-card:hover .aeb-letter { color: rgba(201,169,97,0.14); }
+    .aeb-tag {
+      font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px; display: block;
+    }
+    .aeb-name {
+      font-family: var(--serif); font-size: 28px; font-weight: 300;
+      color: var(--white); margin-bottom: 4px; letter-spacing: 0.05em;
+    }
+    .aeb-jp {
+      font-size: 11px; color: rgba(255,255,255,0.4);
+      margin-bottom: 24px; letter-spacing: 0.1em;
+    }
+    .aeb-desc {
+      font-size: 14px; color: rgba(255,255,255,0.55); line-height: 2.0;
+    }
+    .aeb-icon {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(201,169,97,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 28px;
+      font-size: 16px;
+    }
+
+    /* ── 02 MOLECULAR ── */
+    .molecular { background: var(--bg); }
+
+    .mol-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .mol-visual {
+      position: relative;
+    }
+    .mol-diagram {
+      background: var(--bg-dark);
+      border: 1px solid rgba(201,169,97,0.12);
+      border-radius: 2px;
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .mol-diagram-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,169,97,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,169,97,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* 水分子クラスター図 */
+    .cluster-compare {
+      display: flex; gap: 40px; justify-content: center; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .cluster-box { text-align: center; }
+    .cluster-label {
+      font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 20px; display: block;
+    }
+    .cluster-visual {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 28px; font-weight: 300;
+      position: relative;
+    }
+    .cluster-before {
+      background: radial-gradient(circle, rgba(100,100,120,0.3) 0%, rgba(60,60,80,0.15) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.3);
+    }
+    .cluster-after {
+      background: radial-gradient(circle, rgba(201,169,97,0.25) 0%, rgba(201,169,97,0.08) 100%);
+      border: 1px solid rgba(201,169,97,0.4);
+      color: var(--gold);
+      box-shadow: 0 0 30px rgba(201,169,97,0.15);
+    }
+    .cluster-num {
+      font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em;
+    }
+    .cluster-arrow {
+      font-family: var(--serif); font-size: 24px;
+      color: rgba(201,169,97,0.4);
+    }
+
+    .mol-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; margin-top: 2px;
+    }
+    .mol-stat {
+      background: rgba(201,169,97,0.05);
+      border: 1px solid rgba(201,169,97,0.1);
+      padding: 24px;
+    }
+    .mol-stat-num {
+      font-family: var(--serif); font-size: 36px; font-weight: 300;
+      color: var(--gold); display: block; margin-bottom: 4px;
+    }
+    .mol-stat-label { font-size: 12px; color: var(--text-mid); }
+
+    .mol-content {}
+    .process-list { margin-top: 8px; }
+    .process-item {
+      display: flex; gap: 24px; align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(201,169,97,0.1);
+    }
+    .process-item:first-child { border-top: 1px solid rgba(201,169,97,0.1); }
+    .process-num {
+      font-family: var(--serif); font-size: 32px; font-weight: 300;
+      color: rgba(201,169,97,0.3); flex-shrink: 0; line-height: 1;
+      width: 40px; text-align: right;
+    }
+    .process-text h4 {
+      font-size: 14px; font-weight: 500; color: var(--text);
+      margin-bottom: 6px; letter-spacing: 0.03em;
+    }
+    .process-text p { font-size: 13px; color: var(--text-mid); line-height: 1.9; }
+
+    /* ── 03 EVIDENCE ── */
+    .evidence { background: var(--white); }
+
+    .evidence-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .evidence-chart {
+      background: var(--bg-dark);
+      border: 1px solid rgba(201,169,97,0.12);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .evidence-chart-bg {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(201,169,97,0.03) 1px, transparent 1px);
+      background-size: 100% 25%;
+    }
+    .chart-title {
+      font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 36px; position: relative;
+    }
+    .bar-chart { display: flex; gap: 20px; align-items: flex-end; height: 200px; position: relative; }
+    .bar-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .bar {
+      width: 100%; border-radius: 2px 2px 0 0;
+      position: relative; display: flex; align-items: flex-start; justify-content: center;
+    }
+    .bar-pct {
+      position: absolute; top: -28px;
+      font-family: var(--serif); font-size: 18px; color: var(--white);
+      white-space: nowrap;
+    }
+    .bar-normal { height: 50px; background: rgba(255,255,255,0.12); }
+    .bar-denba  { height: 200px; background: linear-gradient(to top, #8B6914, var(--gold)); box-shadow: 0 0 20px rgba(201,169,97,0.2); }
+    .bar-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-align: center; }
+
+    .evidence-note {
+      margin-top: 24px;
+      padding: 16px;
+      background: rgba(201,169,97,0.06);
+      border-left: 2px solid var(--gold);
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .evidence-items { }
+    .evi-item {
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(201,169,97,0.1);
+    }
+    .evi-item:first-child { border-top: 1px solid rgba(201,169,97,0.1); }
+    .evi-tag {
+      font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px; display: block;
+    }
+    .evi-title { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+    .evi-desc { font-size: 13px; color: var(--text-mid); line-height: 1.9; }
+
+    /* ── 04 PATENT ── */
+    .patent-sec { background: var(--bg-dark); }
+    .patent-sec .sec-title { color: var(--white); }
+    .patent-sec .sec-lead { color: rgba(255,255,255,0.55); }
+
+    .patent-main {
+      background: rgba(201,169,97,0.04);
+      border: 1px solid rgba(201,169,97,0.2);
+      padding: 56px 60px;
+      margin-bottom: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    .patent-watermark {
+      position: absolute; right: -20px; bottom: -30px;
+      font-family: var(--serif); font-size: 180px; font-weight: 300;
+      color: rgba(201,169,97,0.04); line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .patent-eyebrow {
+      font-size: 9px; letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px; display: block;
+    }
+    .patent-num {
+      font-family: var(--serif); font-size: clamp(24px, 3vw, 36px);
+      font-weight: 300; color: var(--white); margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+    .patent-name {
+      font-size: 15px; color: rgba(255,255,255,0.6);
+      line-height: 1.9; margin-bottom: 32px;
+    }
+    .patent-meta {
+      display: flex; gap: 40px; flex-wrap: wrap;
+    }
+    .patent-meta-item {}
+    .patent-meta-label { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+    .patent-meta-value { font-size: 13px; color: rgba(255,255,255,0.7); }
+
+    .patent-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .patent-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,169,97,0.08);
+      padding: 36px 32px;
+    }
+    .patent-card-icon {
+      font-family: var(--serif); font-size: 40px; font-weight: 300;
+      color: var(--gold); margin-bottom: 16px; display: block; line-height: 1;
+    }
+    .patent-card-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 10px; }
+    .patent-card-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.9; }
+
+    /* ── 05 FRESHNESS LEADER ── */
+    .freshness { background: var(--bg); }
+
+    .freshness-intro {
+      max-width: 760px; margin-bottom: 70px;
+    }
+    .freshness-quote {
+      font-family: var(--serif); font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 300; font-style: italic;
+      color: #8B6914;
+      line-height: 1.7; margin-bottom: 24px;
+    }
+    .freshness-desc { font-size: 15px; color: var(--text-mid); line-height: 2.2; }
+
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+    .domain-card {
+      border: 1px solid rgba(201,169,97,0.15);
+      padding: 40px 32px;
+      position: relative;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .domain-card:hover {
+      border-color: rgba(201,169,97,0.35);
+      box-shadow: 0 8px 40px rgba(201,169,97,0.06);
+    }
+    .domain-num {
+      font-family: var(--serif); font-size: 48px; font-weight: 300;
+      color: rgba(201,169,97,0.18); position: absolute;
+      top: 20px; right: 24px; line-height: 1;
+    }
+    .domain-icon-wrap {
+      width: 52px; height: 52px;
+      border: 1px solid rgba(201,169,97,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 20px;
+    }
+    .domain-title { font-size: 17px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+    .domain-desc { font-size: 13px; color: var(--text-mid); line-height: 2.0; }
+    .domain-tag {
+      display: inline-block; margin-top: 16px;
+      font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+      padding: 4px 10px; border: 1px solid rgba(201,169,97,0.3);
+      color: var(--gold);
+    }
+
+    /* ── 06 SKINCARE APPLICATION ── */
+    .application { background: var(--white); }
+
+    .app-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .app-visual {
+      background: var(--bg-dark);
+      border: 1px solid rgba(201,169,97,0.12);
+      padding: 60px 40px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .app-visual-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,169,97,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,169,97,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .flow-steps {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .flow-step {
+      display: flex; align-items: center; gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(201,169,97,0.08);
+    }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border: 1px solid rgba(201,169,97,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .flow-content { text-align: left; }
+    .flow-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+    .flow-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+    .flow-arrow {
+      text-align: center; padding: 4px 0;
+      font-size: 18px; color: rgba(201,169,97,0.3);
+    }
+
+    .app-content {}
+    .benefit-list { margin-top: 8px; }
+    .benefit-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(201,169,97,0.08);
+    }
+    .benefit-item:first-child { border-top: 1px solid rgba(201,169,97,0.08); }
+    .benefit-check {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(201,169,97,0.1); border: 1px solid rgba(201,169,97,0.3);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+      font-size: 11px; color: var(--gold);
+    }
+    .benefit-text h4 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .benefit-text p { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
+
+    /* ── CTA ── */
+    .tech-cta {
+      background: var(--bg-dark);
+      padding: 100px 48px;
+      text-align: center;
+    }
+    .tech-cta .eyebrow { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
+    .tech-cta h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 48px); font-weight: 300; color: var(--white); margin-bottom: 16px; letter-spacing: 0.06em; }
+    .tech-cta p { font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 40px; line-height: 2.0; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block; padding: 18px 48px;
+      background: var(--gold); color: var(--bg-dark);
+      font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.3s;
+      border: 1px solid var(--gold);
+    }
+    .btn-primary:hover { background: transparent; color: var(--gold); }
+    .btn-secondary {
+      display: inline-block; padding: 18px 40px;
+      background: transparent; color: rgba(255,255,255,0.6);
+      font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+      text-decoration: none; border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-dark);
+      padding: 48px;
+      border-top: 1px solid rgba(201,169,97,0.1);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 300; letter-spacing: 0.25em; color: rgba(255,255,255,0.6); }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      header { padding: 16px 20px; }
+      nav, .btn-header { display: none; }
+      .tech-nav { overflow-x: auto; justify-content: flex-start; padding: 0 16px; top: 56px; }
+      .tech-nav a { padding: 14px 18px; font-size: 10px; }
+      .tech-hero { min-height: 80vh; padding: 120px 24px 60px; }
+      .hero-badges { gap: 8px; }
+      .sec { padding: 72px 24px; }
+      .aeb-grid { grid-template-columns: 1fr; gap: 2px; }
+      .mol-layout { grid-template-columns: 1fr; gap: 40px; }
+      .mol-stats { grid-template-columns: 1fr 1fr; }
+      .evidence-layout { grid-template-columns: 1fr; gap: 48px; }
+      .patent-main { padding: 36px 28px; }
+      .patent-grid { grid-template-columns: 1fr; gap: 2px; }
+      .domain-grid { grid-template-columns: 1fr; gap: 16px; }
+      .app-layout { grid-template-columns: 1fr; gap: 40px; }
+      .cta-btns { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+      footer { padding: 32px 20px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">DENBA <span>Skincare</span></a>
+  <nav>
+    <a href="index.html#essentials">Ingredients</a>
+    <a href="technology.html" class="active">Technology</a>
+    <a href="products.html">Products</a>
+  </nav>
+  <a href="products.html" class="btn-header">Shop Now</a>
+</header>
+
+<!-- TECH NAV -->
+<nav class="tech-nav">
+  <a href="#what-is">DENBA技術とは</a>
+  <a href="#molecular">分子レベルの研究</a>
+  <a href="#evidence">科学的エビデンス</a>
+  <a href="#patent">特許・知財</a>
+  <a href="#freshness">業界での実績</a>
+  <a href="#application">スキンケアへの応用</a>
+</nav>
+
+<!-- ══════════════════════════════════════
+  HERO
+══════════════════════════════════════ -->
+<section class="tech-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <p class="eyebrow">DENBA Molecular Control Technology</p>
+  <h1>分子設計から、<br><span>究極の浸透</span>へ。</h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">
+    電位水化技術と分子クラスター制御により、<br>
+    全成分を微粒子化。製造工程そのものが、他にない技術基盤。
+  </p>
+  <div class="hero-badges">
+    <span class="hero-badge">特許取得済</span>
+    <span class="hero-badge">世界49カ国 商標登録</span>
+    <span class="hero-badge">4倍浸透 自社エビデンス</span>
+    <span class="hero-badge">国内製造</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  01 DENBA技術とは
+══════════════════════════════════════ -->
+<section class="sec what-is" id="what-is">
+  <div class="sec-inner">
+    <span class="sec-label">01 — What is DENBA Technology</span>
+    <h2 class="sec-title">DENBA技術とは</h2>
+    <div class="gold-line"></div>
+    <p class="sec-lead">
+      DENBA（電場）技術とは、電位と振動の力を応用して物質の分子構造を制御する独自技術です。
+      水分子を3〜5クラスターに小型化し、電位水として全成分を微粒子化することで、
+      これまでにない浸透力と安定性を実現します。化粧品・食品・医療領域で応用される、
+      DENBA JAPANが世界に誇る中核テクノロジー。
+    </p>
+
+    <div class="aeb-grid">
+      <div class="aeb-card">
+        <span class="aeb-letter">A</span>
+        <div class="aeb-icon">💧</div>
+        <span class="aeb-tag">Aqua</span>
+        <p class="aeb-name">分子クラスター制御</p>
+        <p class="aeb-jp">水分子の小型化</p>
+        <p class="aeb-desc">通常13〜17個の水分子クラスターを、DENBA照射により3〜5個に小型化。水分子が小さくなることで、成分の浸透経路が広がり、有効成分が肌のより深い層まで届きやすくなります。</p>
+      </div>
+      <div class="aeb-card">
+        <span class="aeb-letter">E</span>
+        <div class="aeb-icon">⚡</div>
+        <span class="aeb-tag">Energy</span>
+        <p class="aeb-name">電位水化テクノロジー</p>
+        <p class="aeb-jp">DENBA特許技術</p>
+        <p class="aeb-desc">電位エネルギーを付与することで、水を「電位水」に変換。この状態で全原料を製造プロセスに投入することで、単なる水分子の小型化にとどまらず、全成分の微粒子化を実現します。製造工程自体がDENBA独自の技術です。</p>
+      </div>
+      <div class="aeb-card">
+        <span class="aeb-letter">B</span>
+        <div class="aeb-icon">🌿</div>
+        <span class="aeb-tag">Botanical</span>
+        <p class="aeb-name">名匠成分の微粒子化</p>
+        <p class="aeb-jp">有効成分の最大化</p>
+        <p class="aeb-desc">PDRN・黒松露細胞外分泌産物・NAD+など、分子量の大きい高機能成分こそ、微粒子化の恩恵を最大限に受けます。成分ポテンシャルを最大限に引き出した状態で、肌の深部へ届けます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  02 分子レベルの研究
+══════════════════════════════════════ -->
+<section class="sec molecular" id="molecular">
+  <div class="sec-inner">
+    <span class="sec-label">02 — Molecular Research</span>
+    <h2 class="sec-title">分子レベルの革新</h2>
+    <div class="gold-line"></div>
+
+    <div class="mol-layout">
+      <div class="mol-visual">
+        <div class="mol-diagram">
+          <div class="mol-diagram-grid"></div>
+          <p class="chart-title">Water Molecule Cluster — Before & After DENBA</p>
+          <div class="cluster-compare">
+            <div class="cluster-box">
+              <span class="cluster-label">通常の水</span>
+              <div class="cluster-visual cluster-before">13〜17</div>
+              <p class="cluster-num">分子クラスター数</p>
+            </div>
+            <span class="cluster-arrow">→</span>
+            <div class="cluster-box">
+              <span class="cluster-label">DENBA照射後</span>
+              <div class="cluster-visual cluster-after">3〜5</div>
+              <p class="cluster-num">分子クラスター数</p>
+            </div>
+          </div>
+        </div>
+        <div class="mol-stats">
+          <div class="mol-stat">
+            <span class="mol-stat-num">4×</span>
+            <span class="mol-stat-label">浸透速度（自社比較）</span>
+          </div>
+          <div class="mol-stat">
+            <span class="mol-stat-num">49</span>
+            <span class="mol-stat-label">カ国で特許・商標</span>
+          </div>
+          <div class="mol-stat">
+            <span class="mol-stat-num">100%</span>
+            <span class="mol-stat-label">全成分に照射</span>
+          </div>
+          <div class="mol-stat">
+            <span class="mol-stat-num">国内</span>
+            <span class="mol-stat-label">製造・充填・品質管理</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mol-content">
+        <p class="sec-lead" style="margin-bottom: 0;">
+          「水を変えれば、全てが変わる」——DENBA技術の原点はここにあります。
+          製造工程の最初の段階でDENBA照射を行い、ベースとなる水を電位水に変換。
+          その後に加えられる全成分が、この電位水の環境の中で微粒子化されます。
+        </p>
+        <div class="process-list">
+          <div class="process-item">
+            <span class="process-num">1</span>
+            <div class="process-text">
+              <h4>DENBA照射 — 電位水の生成</h4>
+              <p>製造ラインにDENBAユニットを設置。精製水にDENBAエネルギーを照射し、水分子クラスターを3〜5個に縮小。電位を帯びた「電位水」を生成します。</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <span class="process-num">2</span>
+            <div class="process-text">
+              <h4>全原料の微粒子化 — 空間照射方式</h4>
+              <p>DENBA空間照射方式により、製造空間内のすべての原料に電位エネルギーが作用。水溶性・油溶性を問わず、全成分が微粒子化された状態でブレンドされます。</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <span class="process-num">3</span>
+            <div class="process-text">
+              <h4>国内充填 — 品質を維持したまま製品化</h4>
+              <p>微粒子化された状態の原液を、国内の充填ラインで製品化。「Made in Japan」の品質管理のもと、成分の状態を保ったまま容器に封入します。</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <span class="process-num">4</span>
+            <div class="process-text">
+              <h4>肌への到達 — 深部への確かな浸透</h4>
+              <p>微粒子化された成分は、肌の浸透経路を通りやすく、通常よりも速いスピードで深部まで届きます。自社比較で4倍の浸透速度を確認しています。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  03 科学的エビデンス
+══════════════════════════════════════ -->
+<section class="sec evidence" id="evidence">
+  <div class="sec-inner">
+    <span class="sec-label">03 — Scientific Evidence</span>
+    <h2 class="sec-title">科学的エビデンス</h2>
+    <div class="gold-line"></div>
+
+    <div class="evidence-layout">
+      <div>
+        <div class="evidence-chart">
+          <div class="evidence-chart-bg"></div>
+          <p class="chart-title">Penetration Speed Comparison</p>
+          <div class="bar-chart">
+            <div class="bar-item">
+              <div class="bar bar-normal">
+                <span class="bar-pct" style="color:rgba(255,255,255,0.5);">1×</span>
+              </div>
+              <span class="bar-label">一般化粧品</span>
+            </div>
+            <div class="bar-item">
+              <div class="bar bar-denba">
+                <span class="bar-pct" style="color:var(--gold);">4×</span>
+              </div>
+              <span class="bar-label">DENBA技術</span>
+            </div>
+          </div>
+          <div class="evidence-note">
+            ※自社による比較試験データ。DENBA照射あり・なしの浸透速度を比較。個人差があります。
+          </div>
+        </div>
+      </div>
+
+      <div class="evidence-items">
+        <div class="evi-item">
+          <span class="evi-tag">Penetration</span>
+          <p class="evi-title">浸透速度 4倍（自社比較）</p>
+          <p class="evi-desc">DENBA照射あり・なしのサンプルを用いた自社比較試験にて、照射品が約4倍速く有効成分が浸透することを確認。微粒子化による浸透経路の拡大が要因です。</p>
+        </div>
+        <div class="evi-item">
+          <span class="evi-tag">Molecular</span>
+          <p class="evi-title">水分子クラスターの小型化を確認</p>
+          <p class="evi-desc">核磁気共鳴（NMR）分析により、DENBA照射後の水分子クラスターが通常の約1/3〜1/4に小型化することを確認。物理的な変化として計測可能です。</p>
+        </div>
+        <div class="evi-item">
+          <span class="evi-tag">Stability</span>
+          <p class="evi-title">成分の安定性・鮮度保持への寄与</p>
+          <p class="evi-desc">微粒子化された成分は、通常状態に比べて酸化・変性が起こりにくく、製品の安定性と成分の長期保全に貢献。DENBA技術を活かした保管・輸送の最適化も実現しています。</p>
+        </div>
+        <div class="evi-item">
+          <span class="evi-tag">Multi-domain</span>
+          <p class="evi-title">食品・医療分野での実績</p>
+          <p class="evi-desc">同じ技術原理が、食品の鮮度保持・医療機器の分野で先行して実用化。多領域での実績がDENBA技術の信頼性を裏付けています。スキンケアはその応用展開です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  04 特許・知財
+══════════════════════════════════════ -->
+<section class="sec patent-sec" id="patent">
+  <div class="sec-inner">
+    <span class="sec-label">04 — Patents & Intellectual Property</span>
+    <h2 class="sec-title" style="color:var(--white);">特許・知財</h2>
+    <div class="gold-line"></div>
+    <p class="sec-lead" style="color:rgba(255,255,255,0.55);">
+      DENBA技術の独自性は、特許という形で法的に保護されています。
+      世界49カ国での商標登録・特許取得が、この技術の国際的な信頼性を証明しています。
+    </p>
+
+    <div class="patent-main">
+      <div class="patent-watermark">P</div>
+      <span class="patent-eyebrow">Core Patent — Japan</span>
+      <p class="patent-num">特許第7809311号</p>
+      <p class="patent-name">
+        液状・クリーム状・ジェル状・エマルジョン状物質の<br>
+        浸透力改善装置
+      </p>
+      <div class="patent-meta">
+        <div class="patent-meta-item">
+          <p class="patent-meta-label">発明者</p>
+          <p class="patent-meta-value">後藤錦隆 / 近藤加奈子</p>
+        </div>
+        <div class="patent-meta-item">
+          <p class="patent-meta-label">権利者</p>
+          <p class="patent-meta-value">DENBAホールディングス株式会社</p>
+        </div>
+        <div class="patent-meta-item">
+          <p class="patent-meta-label">対象</p>
+          <p class="patent-meta-value">液状・クリーム・ジェル・エマルジョン全般</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="patent-grid">
+      <div class="patent-card">
+        <span class="patent-card-icon">49</span>
+        <p class="patent-card-title">カ国での商標登録・特許取得</p>
+        <p class="patent-card-desc">北米・欧州・アジア・中東を含む世界49カ国にて、DENBA技術の商標登録および特許取得が完了。グローバルに保護された技術知財です。</p>
+      </div>
+      <div class="patent-card">
+        <span class="patent-card-icon">ISO</span>
+        <p class="patent-card-title">国際品質基準への対応</p>
+        <p class="patent-card-desc">ISO9001、CE、FCCなど国際的な安全基準をクリアした品質管理体制のもとで開発。スキンケアへの応用においても、同水準の品質管理を適用しています。</p>
+      </div>
+      <div class="patent-card">
+        <span class="patent-card-icon">🇯🇵</span>
+        <p class="patent-card-title">国内製造による品質の一貫管理</p>
+        <p class="patent-card-desc">原液の充填から最終製品まで、すべて日本国内で製造。知財で守られた製造プロセスが、DENBA Skincareの品質を担保します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  05 鮮度保持のトップランナー
+══════════════════════════════════════ -->
+<section class="sec freshness" id="freshness">
+  <div class="sec-inner">
+    <span class="sec-label">05 — Industry Leadership</span>
+    <h2 class="sec-title">鮮度保持技術の<br>トップランナー</h2>
+    <div class="gold-line"></div>
+
+    <div class="freshness-intro">
+      <p class="freshness-quote">
+        「物質の鮮度を守る技術が、<br>
+        スキンケアの常識を変える。」
+      </p>
+      <p class="freshness-desc">
+        DENBA技術の根幹にある「分子レベルでの鮮度保持」は、化粧品だけの技術ではありません。
+        食品業界では食材の細胞を傷めない冷凍・保存技術として、医療・健康機器の分野では
+        生体細胞の環境を整える電場治療器として、先行して実績を積み上げてきました。
+        分野を超えて証明されてきた技術力が、スキンケアという新たなフィールドで融合します。
+      </p>
+    </div>
+
+    <div class="domain-grid">
+      <div class="domain-card">
+        <span class="domain-num">01</span>
+        <div class="domain-icon-wrap">🥩</div>
+        <p class="domain-title">食品・鮮度保持</p>
+        <p class="domain-desc">電場技術により食材の細胞を傷めることなく低温保存を実現。食肉・鮮魚・農産物の鮮度を長期間維持し、食品ロス削減・品質向上で評価される先行領域です。</p>
+        <span class="domain-tag">先行実績あり</span>
+      </div>
+      <div class="domain-card">
+        <span class="domain-num">02</span>
+        <div class="domain-icon-wrap">🏥</div>
+        <p class="domain-title">医療・健康機器</p>
+        <p class="domain-desc">電位治療器として、血流促進・自律神経ケアへの応用を医療機器の区分で展開。北米での規制認証取得に向けたプロセスも進行中。生体への安全性が確認された技術基盤です。</p>
+        <span class="domain-tag">国際展開中</span>
+      </div>
+      <div class="domain-card">
+        <span class="domain-num">03</span>
+        <div class="domain-icon-wrap">✨</div>
+        <p class="domain-title">スキンケア — 新応用領域</p>
+        <p class="domain-desc">食品・医療で培った「細胞環境を整える電場技術」を、スキンケアの製造工程に応用。有効成分の微粒子化という形で、化粧品業界に新たな技術軸をもたらします。</p>
+        <span class="domain-tag">DENBA Skincare</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  06 スキンケアへの応用
+══════════════════════════════════════ -->
+<section class="sec application" id="application">
+  <div class="sec-inner">
+    <span class="sec-label">06 — Application to Skincare</span>
+    <h2 class="sec-title">スキンケアへの<br>応用</h2>
+    <div class="gold-line"></div>
+
+    <div class="app-layout">
+      <div class="app-visual">
+        <div class="app-visual-bg"></div>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-icon">💧</div>
+            <div class="flow-content">
+              <p class="flow-title">電位水の生成</p>
+              <p class="flow-desc">DENBA照射で水分子クラスターを縮小</p>
+            </div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">
+            <div class="flow-icon">🔬</div>
+            <div class="flow-content">
+              <p class="flow-title">全成分の微粒子化</p>
+              <p class="flow-desc">PDRN・黒松露・NAD+など全原料に作用</p>
+            </div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">
+            <div class="flow-icon">🏭</div>
+            <div class="flow-content">
+              <p class="flow-title">国内充填・品質管理</p>
+              <p class="flow-desc">成分の状態を保ったまま日本国内で製品化</p>
+            </div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">
+            <div class="flow-icon">✨</div>
+            <div class="flow-content">
+              <p class="flow-title">肌深部への到達</p>
+              <p class="flow-desc">通常の4倍速で有効成分が浸透（自社比較）</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-content">
+        <p class="sec-lead" style="margin-bottom: 8px;">
+          DENBA Skincareの4製品はすべて、この技術プロセスを経て製造されます。
+          成分の良さだけでなく、「届ける力」が他にはない価値です。
+        </p>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <div class="benefit-check">✓</div>
+            <div class="benefit-text">
+              <h4>成分の分子量に関わらず微粒子化</h4>
+              <p>PDRNのような高分子量の成分も、DENBA技術により微粒子化。分子量が大きいがゆえに届きにくかった成分を、効率よく肌へ届けます。</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check">✓</div>
+            <div class="benefit-text">
+              <h4>製造工程に組み込まれた独自性</h4>
+              <p>原料を後から混ぜるのではなく、製造プロセスの最初からDENBAが作用。同じ成分リストでも、製造プロセスが異なる「別物」です。</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check">✓</div>
+            <div class="benefit-text">
+              <h4>特許で守られた再現不可能な技術</h4>
+              <p>特許第7809311号により法的に保護。同様の製造アプローチは他社が容易に模倣できない、DENBA独自の技術資産です。</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check">✓</div>
+            <div class="benefit-text">
+              <h4>食品・医療での実績が裏付ける安全性</h4>
+              <p>食品の鮮度保持・医療機器という、安全基準の厳しい領域で先行実績を持つDENBA技術。スキンケアへの応用においても、その安全性の基盤は同じです。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  CTA
+══════════════════════════════════════ -->
+<section class="tech-cta">
+  <p class="eyebrow">Experience the Technology</p>
+  <h2>技術を、肌で感じてください。</h2>
+  <p>
+    DENBA分子浸透技術が生きた4製品。<br>
+    まずはThe Lineから、その違いを。
+  </p>
+  <div class="cta-btns">
+    <a href="products.html" class="btn-primary">製品を見る</a>
+    <a href="index.html" class="btn-secondary">ブランドストーリー</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">DENBA <span>Skincare</span></div>
+    <p class="footer-copy">© 2026 DENBA JAPAN Co., Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
