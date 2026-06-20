@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | DENBA Skincare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C9A961;
+      --gold-light: #E8D5A3;
+      --gold-pale: #F5EDD8;
+      --bg: #FDFBF8;
+      --bg-dark: #1A1712;
+      --text: #1A1A1A;
+      --text-mid: #5A5550;
+      --text-light: #9A9490;
+      --white: #FFFFFF;
+      --serif: 'Cormorant Garamond', 'Noto Serif JP', serif;
+      --sans: 'Noto Sans JP', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.8; overflow-x: hidden; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(253,251,248,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,169,97,0.2);
+    }
+    .logo { font-family: var(--serif); font-size: 22px; font-weight: 300; letter-spacing: 0.25em; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--gold); }
+    nav { display: flex; gap: 36px; list-style: none; }
+    nav a { font-size: 12px; letter-spacing: 0.15em; color: var(--text-mid); text-decoration: none; text-transform: uppercase; transition: color 0.3s; }
+    nav a:hover, nav a.active { color: var(--gold); }
+    .btn-header { font-size: 11px; letter-spacing: 0.2em; padding: 10px 24px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; text-transform: uppercase; transition: all 0.3s; }
+    .btn-header:hover { background: var(--gold); color: var(--white); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--bg-dark);
+      padding: 160px 48px 80px;
+      text-align: center;
+    }
+    .page-hero .eyebrow { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
+    .page-hero h1 { font-family: var(--serif); font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: var(--white); letter-spacing: 0.15em; margin-bottom: 24px; }
+    .page-hero p { font-size: 15px; color: rgba(255,255,255,0.6); letter-spacing: 0.05em; max-width: 520px; margin: 0 auto; line-height: 2.0; }
+    .page-hero .divider { width: 40px; height: 1px; background: var(--gold); margin: 28px auto 0; }
+
+    /* ── PRODUCT NAV ── */
+    .product-nav {
+      background: var(--white);
+      border-bottom: 1px solid rgba(201,169,97,0.15);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      position: sticky;
+      top: 62px;
+      z-index: 90;
+    }
+    .product-nav a {
+      padding: 18px 32px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--text-mid);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s;
+    }
+    .product-nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── PRODUCT SECTION ── */
+    .product-section {
+      padding: 100px 0;
+      border-bottom: 1px solid rgba(201,169,97,0.12);
+    }
+    .product-section:nth-child(odd) { background: var(--bg); }
+    .product-section:nth-child(even) { background: var(--white); }
+
+    .product-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .product-section:nth-child(even) .product-inner { direction: rtl; }
+    .product-section:nth-child(even) .product-inner > * { direction: ltr; }
+
+    /* ── PRODUCT VISUAL ── */
+    .product-visual {
+      position: sticky;
+      top: 140px;
+    }
+    .product-img-wrap {
+      aspect-ratio: 3/4;
+      border-radius: 2px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .product-img-wrap.lotion  { background: linear-gradient(160deg, #F0E8D4 0%, #E2D5B8 100%); }
+    .product-img-wrap.emulsion{ background: linear-gradient(160deg, #EDE6D4 0%, #DDD3B8 100%); }
+    .product-img-wrap.cream   { background: linear-gradient(160deg, #EAE0CC 0%, #D8C9A8 100%); }
+    .product-img-wrap.serum   { background: linear-gradient(160deg, #1E1A12 0%, #2A2418 100%); }
+
+    .bottle-3d {
+      position: relative;
+    }
+    .bottle-3d.lotion-3d {
+      width: 90px; height: 200px;
+      background: linear-gradient(135deg, #E8DCC8, #C8B88A);
+      border-radius: 8px 8px 12px 12px;
+    }
+    .bottle-3d.lotion-3d::before {
+      content: ''; position: absolute;
+      top: -24px; left: 50%; transform: translateX(-50%);
+      width: 28px; height: 30px;
+      background: linear-gradient(135deg, #D4C8A8, #B8A87A);
+      border-radius: 4px 4px 0 0;
+    }
+    .bottle-3d.emulsion-3d {
+      width: 80px; height: 180px;
+      background: linear-gradient(135deg, #E4D8C0, #C4B080);
+      border-radius: 8px 8px 14px 14px;
+    }
+    .bottle-3d.emulsion-3d::before {
+      content: ''; position: absolute;
+      top: -20px; left: 50%; transform: translateX(-50%);
+      width: 24px; height: 26px;
+      background: linear-gradient(135deg, #D0C4A0, #B0A068);
+      border-radius: 4px 4px 0 0;
+    }
+    .bottle-3d.cream-3d {
+      width: 120px; height: 80px;
+      background: linear-gradient(135deg, #E8DCC8, #C8B88A);
+      border-radius: 8px;
+    }
+    .bottle-3d.cream-3d::after {
+      content: ''; position: absolute;
+      top: -16px; left: 50%; transform: translateX(-50%);
+      width: 100px; height: 20px;
+      background: linear-gradient(135deg, #D8CCA8, #B8A870);
+      border-radius: 6px 6px 0 0;
+    }
+    .bottle-3d.serum-3d {
+      width: 60px; height: 160px;
+      background: linear-gradient(135deg, #3A3020, #1A1208);
+      border-radius: 6px 6px 10px 10px;
+      border: 1px solid rgba(201,169,97,0.3);
+    }
+    .bottle-3d.serum-3d::before {
+      content: ''; position: absolute;
+      top: -28px; left: 50%; transform: translateX(-50%);
+      width: 20px; height: 34px;
+      background: linear-gradient(135deg, #C9A961, #A07830);
+      border-radius: 3px 3px 0 0;
+    }
+
+    .product-no-badge {
+      position: absolute;
+      top: 24px; left: 24px;
+      font-family: var(--serif);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: rgba(201,169,97,0.8);
+    }
+
+    .product-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .product-tag {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      padding: 5px 12px;
+      border: 1px solid rgba(201,169,97,0.4);
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ── PRODUCT CONTENT ── */
+    .product-content {}
+    .p-eyebrow { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+    .p-number { font-family: var(--serif); font-size: 13px; letter-spacing: 0.3em; color: var(--text-light); margin-bottom: 4px; }
+    .p-jp-name { font-size: 13px; color: var(--text-mid); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .p-en-name { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); font-weight: 300; letter-spacing: 0.05em; color: var(--text); line-height: 1.3; margin-bottom: 6px; }
+    .p-volume { font-size: 12px; color: var(--text-light); letter-spacing: 0.1em; margin-bottom: 32px; }
+
+    .divider-gold { width: 40px; height: 1px; background: var(--gold); margin-bottom: 32px; }
+
+    .p-tagline { font-family: var(--serif); font-size: 20px; font-weight: 300; font-style: italic; color: var(--gold); line-height: 1.6; margin-bottom: 20px; }
+    .p-description { font-size: 15px; color: var(--text-mid); line-height: 2.1; margin-bottom: 40px; }
+
+    /* ── KEY INGREDIENTS ── */
+    .ing-section { margin-bottom: 40px; }
+    .ing-section-title {
+      font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(201,169,97,0.2);
+    }
+    .ing-item {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .ing-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); margin-top: 9px; flex-shrink: 0;
+    }
+    .ing-item-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; letter-spacing: 0.03em; }
+    .ing-item-desc { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
+
+    /* ── HOW TO USE ── */
+    .howto-section { margin-bottom: 40px; }
+    .howto-section-title {
+      font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(201,169,97,0.2);
+    }
+    .howto-steps { display: flex; flex-direction: column; gap: 12px; }
+    .howto-step { display: flex; gap: 16px; align-items: flex-start; }
+    .howto-num {
+      width: 24px; height: 24px; border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--gold); flex-shrink: 0; margin-top: 2px;
+    }
+    .howto-text { font-size: 14px; color: var(--text-mid); line-height: 1.9; }
+
+    /* ── PRICE + CTA ── */
+    .price-cta {
+      padding-top: 32px;
+      border-top: 1px solid rgba(201,169,97,0.2);
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .price-block {}
+    .price-label { font-size: 10px; letter-spacing: 0.25em; color: var(--text-light); text-transform: uppercase; margin-bottom: 4px; }
+    .price-amount { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--text); letter-spacing: 0.05em; }
+    .price-amount small { font-size: 14px; color: var(--text-light); }
+    .price-sub { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--bg-dark);
+      color: var(--white);
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: 1px solid var(--bg-dark);
+    }
+    .btn-primary:hover { background: var(--gold); border-color: var(--gold); }
+    .btn-secondary {
+      display: inline-block;
+      padding: 16px 32px;
+      background: transparent;
+      color: var(--text-mid);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(0,0,0,0.15);
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── CORE BADGE ── */
+    .core-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      padding: 6px 14px;
+      border: 1px solid rgba(201,169,97,0.3);
+      margin-bottom: 32px;
+      text-transform: uppercase;
+    }
+    .core-badge::before {
+      content: '';
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* ── FULL INGREDIENTS ── */
+    .full-ing-toggle {
+      font-size: 11px; letter-spacing: 0.2em; color: var(--text-light);
+      text-transform: uppercase; cursor: pointer;
+      background: none; border: none;
+      padding: 0; margin-top: 8px;
+      text-decoration: underline;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .full-ing-list {
+      display: none;
+      margin-top: 12px;
+      padding: 16px;
+      background: rgba(201,169,97,0.04);
+      font-size: 12px;
+      color: var(--text-light);
+      line-height: 2.0;
+      border: 1px solid rgba(201,169,97,0.1);
+    }
+    .full-ing-list.open { display: block; }
+
+    /* ── SET BANNER ── */
+    .set-banner {
+      background: var(--bg-dark);
+      padding: 80px 48px;
+      text-align: center;
+    }
+    .set-banner .eyebrow { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
+    .set-banner h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 48px); font-weight: 300; color: var(--white); margin-bottom: 16px; }
+    .set-banner p { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 32px; }
+    .set-price { font-family: var(--serif); font-size: 36px; color: var(--gold); margin-bottom: 8px; }
+    .set-save { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 32px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-dark);
+      padding: 48px;
+      border-top: 1px solid rgba(201,169,97,0.1);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 300; letter-spacing: 0.25em; color: rgba(255,255,255,0.7); }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      header { padding: 16px 20px; }
+      nav, .btn-header { display: none; }
+      .page-hero { padding: 120px 24px 60px; }
+      .product-nav { overflow-x: auto; justify-content: flex-start; padding: 0 20px; top: 56px; }
+      .product-nav a { padding: 14px 20px; white-space: nowrap; flex-shrink: 0; }
+      .product-section { padding: 64px 0; }
+      .product-inner { grid-template-columns: 1fr; gap: 40px; padding: 0 24px; }
+      .product-section:nth-child(even) .product-inner { direction: ltr; }
+      .product-visual { position: relative; top: 0; }
+      .product-img-wrap { aspect-ratio: 4/3; }
+      .price-cta { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+      .set-banner { padding: 60px 24px; }
+      footer { padding: 32px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">DENBA <span>Skincare</span></a>
+  <nav>
+    <a href="index.html#essentials">Ingredients</a>
+    <a href="index.html#technology">Technology</a>
+    <a href="products.html" class="active">Products</a>
+  </nav>
+  <a href="#lotion" class="btn-header">Shop Now</a>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <p class="eyebrow">Phase 1 Collection</p>
+  <h1>The Line</h1>
+  <div class="divider"></div>
+  <p>PDRN・黒松露・NAD+の核心3成分と<br>DENBA分子浸透理念が融合した、新世代スキンケア。</p>
+</section>
+
+<!-- PRODUCT NAV -->
+<nav class="product-nav">
+  <a href="#lotion">No.01 化粧水</a>
+  <a href="#emulsion">No.02 乳液</a>
+  <a href="#cream">No.03 クリーム</a>
+  <a href="#serum">No.04 美容液</a>
+</nav>
+
+<!-- ════════════════════════════════════
+  No.01 化粧水
+════════════════════════════════════ -->
+<section class="product-section" id="lotion">
+  <div class="product-inner">
+
+    <div class="product-visual">
+      <div class="product-img-wrap lotion">
+        <span class="product-no-badge">No. 01</span>
+        <div class="bottle-3d lotion-3d"></div>
+      </div>
+      <div class="product-tags">
+        <span class="product-tag">保湿</span>
+        <span class="product-tag">浸透</span>
+        <span class="product-tag">エイジングケア</span>
+      </div>
+    </div>
+
+    <div class="product-content">
+      <p class="p-number">No. 01</p>
+      <p class="p-jp-name">化粧水</p>
+      <h2 class="p-en-name">Water Revital<br>Lotion</h2>
+      <p class="p-volume">120 ml</p>
+      <div class="divider-gold"></div>
+
+      <span class="core-badge">PDRN + Black Truffle EPS + NAD+</span>
+
+      <p class="p-tagline">「水のように肌に溶け込み、<br>細胞の深部から整える」</p>
+      <p class="p-description">
+        核心3成分にPENTAVITIN®の長時間保湿を組み合わせた、みずみずしく軽やかな化粧水。DENBA分子浸透技術により、有効成分を微粒子化。通常の4倍速で肌の深部まで届けます。テクスチャーは軽くさらっとしていながら、使用後はしっとりとしたうるおい感が長時間持続。洗顔後の最初のステップとして、肌のコンディションを整えます。
+      </p>
+
+      <div class="ing-section">
+        <p class="ing-section-title">Key Ingredients</p>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">PDRN（ポリデオキシリボヌクレオチド）</p>
+            <p class="ing-item-desc">サーモン由来の核酸成分。DNAの構成要素に近い構造を持ち、肌細胞との分子レベルの親和性が高い。体に馴染みやすい特性を持つエイジングケア成分。</p>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">黒松露（黒トリュフ）細胞外分泌産物</p>
+            <p class="ing-item-desc">世界三大珍味・黒トリュフが生命活動の中で分泌する細胞外産物。採取から製造までの鮮度管理が品質を左右する、希少性の高い成分。</p>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">NAD+（ニコチンアミドアデニンジヌクレオチド）</p>
+            <p class="ing-item-desc">あらゆる生細胞に存在するエネルギー補酵素。前駆体ではなく生体内と同じNAD+の直接形態で配合。20代以降年々減少するNAD+を直接補給するアプローチ。</p>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">PENTAVITIN®</p>
+            <p class="ing-item-desc">糖系複合体が肌に類似した構造を持ち、高い親和性で角層に結合。72時間持続保湿を実現する安定型保湿成分。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="howto-section">
+        <p class="howto-section-title">How to Use</p>
+        <div class="howto-steps">
+          <div class="howto-step">
+            <div class="howto-num">1</div>
+            <p class="howto-text">洗顔後、適量（500円玉大）を手のひらに取る</p>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">2</div>
+            <p class="howto-text">顔全体になじませ、指の腹でやさしく押さえるように浸透させる</p>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">3</div>
+            <p class="howto-text">乳液またはクリームで仕上げる。重ね付けで保湿効果が高まる</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-cta">
+        <div class="price-block">
+          <p class="price-label">Price</p>
+          <p class="price-amount">¥4,400 <small>（税込）</small></p>
+          <p class="price-sub">120ml / 約2ヶ月分</p>
+        </div>
+        <a href="#" class="btn-primary">Add to Cart</a>
+        <a href="index.html" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+  No.02 乳液
+════════════════════════════════════ -->
+<section class="product-section" id="emulsion">
+  <div class="product-inner">
+
+    <div class="product-visual">
+      <div class="product-img-wrap emulsion">
+        <span class="product-no-badge">No. 02</span>
+        <div class="bottle-3d emulsion-3d"></div>
+      </div>
+      <div class="product-tags">
+        <span class="product-tag">ハリ</span>
+        <span class="product-tag">リフティング</span>
+        <span class="product-tag">低刺激レチノール</span>
+      </div>
+    </div>
+
+    <div class="product-content">
+      <p class="p-number">No. 02</p>
+      <p class="p-jp-name">乳液</p>
+      <h2 class="p-en-name">Firm & Glow<br>Emulsion</h2>
+      <p class="p-volume">100 ml</p>
+      <div class="divider-gold"></div>
+
+      <span class="core-badge">PDRN + Black Truffle EPS + NAD+</span>
+
+      <p class="p-tagline">「反重力へ。ぷるっとした<br>ハリ感が、長く続く」</p>
+      <p class="p-description">
+        Gravity®複合成分×植物型レチノール三重複合で、ハリと明るさを与える乳液。べたつきの少ない軽い感触でも、使った後はもっちりとしたハリ感が続く。植物由来の低刺激レチノールを3種複合することで、敏感な方でも使いやすいエイジングケアを実現しました。
+      </p>
+
+      <div class="ing-section">
+        <p class="ing-section-title">Key Ingredients</p>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">PDRN・黒松露細胞外分泌産物・NAD+</p>
+            <p class="ing-item-desc">化粧水と同じ核心3成分。重ね使いで有効成分の浸透と効果を強化。</p>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">Gravity®複合成分</p>
+            <p class="ing-item-desc">乳液専用に開発されたリフティング複合成分。肌を引き締め、重力に逆らうような上向きの肌へ整える独自アプローチ。</p>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">植物型レチノール（三重複合・低刺激）</p>
+            <p class="ing-item-desc">3種の植物由来レチノール様成分を複合配合。刺激を最小限に抑えながら、ターンオーバーをサポートするエイジングケア成分。一般的なレチノールより穏やかに作用するため、敏感肌の方にも。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="howto-section">
+        <p class="howto-section-title">How to Use</p>
+        <div class="howto-steps">
+          <div class="howto-step">
+            <div class="howto-num">1</div>
+            <p class="howto-text">化粧水の後、適量を手のひらに取る</p>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">2</div>
+            <p class="howto-text">顔全体にやさしくなじませ、気になる部分（ほうれい線、目元、フェイスライン）は指でやさしく押さえる</p>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">3</div>
+            <p class="howto-text">乾燥が気になる場合はクリームを重ねる</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-cta">
+        <div class="price-block">
+          <p class="price-label">Price</p>
+          <p class="price-amount">¥5,500 <small>（税込）</small></p>
+          <p class="price-sub">100ml / 約2ヶ月分</p>
+        </div>
+        <a href="#" class="btn-primary">Add to Cart</a>
+        <a href="index.html" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+  No.03 クリーム
+════════════════════════════════════ -->
+<section class="product-section" id="cream">
+  <div class="product-inner">
+
+    <div class="product-visual">
+      <div class="product-img-wrap cream">
+        <span class="product-no-badge">No. 03</span>
+        <div class="bottle-3d cream-3d"></div>
+      </div>
+      <div class="product-tags">
+        <span class="product-tag">バリアケア</span>
+        <span class="product-tag">昼夜兼用</span>
+        <span class="product-tag">光ダメージ</span>
+      </div>
+    </div>
+
+    <div class="product-content">
+      <p class="p-number">No. 03</p>
+      <p class="p-jp-name">クリーム</p>
+      <h2 class="p-en-name">Firm Repair<br>Cream</h2>
+      <p class="p-volume">50 g</p>
+      <div class="divider-gold"></div>
+
+      <span class="core-badge">PDRN + Black Truffle EPS + NAD+</span>
+
+      <p class="p-tagline">「バリアと光ダメージ、<br>両面からケアするマルチリペア」</p>
+      <p class="p-description">
+        昼夜使えるマルチリペアクリーム。SAKADIKIUM®が肌の防御機能を高め、毛蕊花エキス（ムレイン）が光ダメージのリペアをサポート。朝はメイク下地としてもご使用可能。なめらかなテクスチャーがうるおいのベールを作り、一日中みずみずしい肌をキープします。
+      </p>
+
+      <div class="ing-section">
+        <p class="ing-section-title">Key Ingredients</p>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">PDRN・黒松露細胞外分泌産物・NAD+</p>
+            <p class="ing-item-desc">核心3成分をクリームに配合。夜間の集中ケアで、翌朝のうるおいと肌コンディションをサポート。</p>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">SAKADIKIUM®</p>
+            <p class="ing-item-desc">肌の防御機能（スキンバリア）を高め、外的ストレスへの耐性をサポートする複合成分。乾燥・外気・ストレスによるダメージから肌を守る。</p>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">毛蕊花エキス（ムレイン）</p>
+            <p class="ing-item-desc">ヨーロッパに自生する植物から抽出したエキス。光ダメージから肌を守り、紫外線を受けた後のリペアをサポート。肌のキメを整え、くすみにアプローチ。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="howto-section">
+        <p class="howto-section-title">How to Use</p>
+        <div class="howto-steps">
+          <div class="howto-step">
+            <div class="howto-num">1</div>
+            <p class="howto-text">化粧水・乳液の後、適量（パール1粒大）を取る</p>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">2</div>
+            <p class="howto-text">顔全体にやさしくなじませる。目元・口元など乾燥が気になる部分には重ね付けを</p>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">3</div>
+            <p class="howto-text">朝使用時はメイク下地としてそのままご使用いただけます</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-cta">
+        <div class="price-block">
+          <p class="price-label">Price</p>
+          <p class="price-amount">¥5,500 <small>（税込）</small></p>
+          <p class="price-sub">50g / 約2ヶ月分</p>
+        </div>
+        <a href="#" class="btn-primary">Add to Cart</a>
+        <a href="index.html" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+  No.04 美容液
+════════════════════════════════════ -->
+<section class="product-section" id="serum">
+  <div class="product-inner">
+
+    <div class="product-visual">
+      <div class="product-img-wrap serum">
+        <span class="product-no-badge" style="color:rgba(201,169,97,0.9);">No. 04</span>
+        <div class="bottle-3d serum-3d"></div>
+      </div>
+      <div class="product-tags">
+        <span class="product-tag">高濃度HPR</span>
+        <span class="product-tag">総合エイジングケア</span>
+        <span class="product-tag">次世代成分</span>
+      </div>
+    </div>
+
+    <div class="product-content">
+      <p class="p-number">No. 04</p>
+      <p class="p-jp-name">美容液</p>
+      <h2 class="p-en-name">Multi-Dimension<br>Aging Care Serum</h2>
+      <p class="p-volume">30 ml</p>
+      <div class="divider-gold"></div>
+
+      <span class="core-badge">PDRN + Black Truffle EPS + NAD+</span>
+
+      <p class="p-tagline">「高濃度HPRを核心に、<br>総合的なエイジングケアを」</p>
+      <p class="p-description">
+        ラインの中で最も高い有効成分濃度を誇る、美容液。高濃度HPR（ヒドロキシピナコロンレチノエート）を核心に、BisabolR®・SynCalmine®・Bodyflux® Oliveの4成分が多角的なエイジングケアを実現。とろみのあるセラムテクスチャーが肌になじむと軽くなり、翌朝もっちり感が続きます。集中ケアとして週2〜3回の使用もおすすめ。
+      </p>
+
+      <div class="ing-section">
+        <p class="ing-section-title">Key Ingredients</p>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">PDRN・黒松露細胞外分泌産物・NAD+</p>
+            <p class="ing-item-desc">核心3成分を最高濃度で配合。セラムとしての高い浸透力で、成分を肌の深部まで届ける。</p>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">高濃度HPR（ヒドロキシピナコロンレチノエート）</p>
+            <p class="ing-item-desc">次世代レチノイドとして注目されるHPR。レチノール転換不要で直接レチノイン酸受容体に作用。刺激が少なく高い安定性を持ちながら、強力なエイジングケア効果を発揮。</p>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">BisabolR®</p>
+            <p class="ing-item-desc">高純度α-ビサボロール。肌の鎮静・整肌・バリア機能サポートに働く、植物由来の複合成分。</p>
+          </div>
+        </div>
+        <div class="ing-item">
+          <div class="ing-dot"></div>
+          <div>
+            <p class="ing-item-name">SynCalmine® + Bodyflux® Olive</p>
+            <p class="ing-item-desc">SynCalmine®は肌の過剰な反応を鎮め、敏感肌へのアプローチをサポート。Bodyflux® Oliveはオリーブ由来の成分で、肌の弾力と密度をサポートする。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="howto-section">
+        <p class="howto-section-title">How to Use</p>
+        <div class="howto-steps">
+          <div class="howto-step">
+            <div class="howto-num">1</div>
+            <p class="howto-text">化粧水の後、2〜3プッシュを手のひらに取る</p>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">2</div>
+            <p class="howto-text">顔全体、特に気になる部分（目元・口元・ほうれい線）に丁寧になじませる</p>
+          </div>
+          <div class="howto-step">
+            <div class="howto-num">3</div>
+            <p class="howto-text">クリームで蓋をする。夜の使用を推奨。週2〜3回の集中ケアとしても使用可能</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-cta">
+        <div class="price-block">
+          <p class="price-label">Price</p>
+          <p class="price-amount">¥8,800 <small>（税込）</small></p>
+          <p class="price-sub">30ml / 約2ヶ月分</p>
+        </div>
+        <a href="#" class="btn-primary">Add to Cart</a>
+        <a href="index.html" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SET BANNER -->
+<section class="set-banner">
+  <p class="eyebrow">Best Value</p>
+  <h2>The Complete Line</h2>
+  <p>4製品すべてを揃えた、DENBA Skincareの完全なルーティン</p>
+  <p class="set-price">¥24,200 <small style="font-size:18px; color:rgba(201,169,97,0.6);">（税込）</small></p>
+  <p class="set-save">4点セット / 化粧水 + 乳液 + クリーム + 美容液</p>
+  <a href="#" class="btn-primary" style="display:inline-block;">Set を購入する</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">DENBA <span>Skincare</span></div>
+    <p class="footer-copy">© 2026 DENBA JAPAN Co., Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
