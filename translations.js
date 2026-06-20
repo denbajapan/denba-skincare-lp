@@ -1,6 +1,7 @@
 window.DENBA_I18N = {
   ja: {
     /* ── 共通ナビ・フッター ── */
+    nav_top: 'TOP',
     nav_ingredients: 'INGREDIENTS',
     nav_technology: 'TECHNOLOGY',
     nav_products: 'PRODUCTS',
@@ -128,6 +129,7 @@ window.DENBA_I18N = {
 
   en: {
     /* ── 共通ナビ・フッター ── */
+    nav_top: 'TOP',
     nav_ingredients: 'INGREDIENTS',
     nav_technology: 'TECHNOLOGY',
     nav_products: 'PRODUCTS',
