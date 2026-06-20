@@ -57,6 +57,7 @@
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       min-width: 100%; min-height: 100%;
+      opacity: 0; transition: opacity 0.6s ease;
       width: auto; height: auto; object-fit: cover;
     }
     .hero-video::after {
@@ -1001,13 +1002,15 @@
   const heroVideo = document.getElementById('heroVideo');
   if (heroVideo) {
     heroVideo.muted = true;
-    // スマホ（768px以下）はHTMLの時点でモバイル用動画を先行設定
-    // ※ DOMContentLoaded前に実行されるため、最初のload()は不要
     if (window.innerWidth <= 768) {
       const src = heroVideo.querySelector('source');
       if (src) src.src = 'images/hero-bg-mobile.mp4';
       heroVideo.load();
     }
+    // 再生が実際に始まった瞬間だけフェードイン（最初のフレームが静止画に見えるのを防ぐ）
+    heroVideo.addEventListener('playing', function() {
+      heroVideo.style.opacity = '1';
+    }, { once: true });
     const tryPlay = () => {
       heroVideo.play().catch(() => {});
     };
