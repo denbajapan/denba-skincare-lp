@@ -46,11 +46,18 @@
     .lang-sep { font-size: 9px; color: rgba(150,140,130,0.35); }
 
     /* HERO */
-    .hero {
-      min-height: 100vh; padding: 140px 60px 80px; background: var(--bg-dark); color: var(--white);
-      display: flex; align-items: center; position: relative; overflow: hidden;
-    }
+    .hero { position: relative; height: 100vh; overflow: hidden; background: var(--bg-dark); }
+    .hero-video { position: absolute; inset: 0; overflow: hidden; }
+    .hero-video video { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; object-fit: cover; opacity: 1; }
+    .hero-video { background: #221E19 url('images/hero-bg.jpg') center/cover no-repeat; }
+    .hero-video::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,8,0.5) 0%, transparent 35%); z-index: 1; }
+    .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .hero-scroll span { font-size: 10px; letter-spacing: 0.3em; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+    .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollAnim 2s ease-in-out infinite; }
+    @keyframes scrollAnim { 0%,100%{opacity:.4;} 50%{opacity:1;} }
     .hero-content { max-width: 680px; z-index: 2; }
+    .hero-lineup { position: absolute; right: 2%; bottom: 0; height: 88%; max-width: 48%; object-fit: contain; object-position: bottom; z-index: 1; filter: drop-shadow(0 24px 50px rgba(0,0,0,0.55)); pointer-events: none; }
+    @media (max-width: 900px) { .hero-lineup { opacity: 0.16; right: -6%; } }
     .hero-eyebrow { font-size: 11px; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; margin-bottom: 18px; }
     .hero-title { font-family: var(--serif); font-size: clamp(46px, 7vw, 92px); font-weight: 300; letter-spacing: 0.05em; line-height: 1.05; margin-bottom: 24px; }
     .hero-subtitle { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 460px; margin-bottom: 42px; line-height: 1.7; }
@@ -96,8 +103,9 @@
     .line-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
     .product-card { background: #fff; text-decoration: none; color: inherit; border: 1px solid rgba(201,169,97,0.1); overflow: hidden; transition: all .3s; }
     .product-card:hover { box-shadow: 0 12px 30px rgba(0,0,0,0.07); transform: translateY(-2px); }
-    .product-img { height: 220px; background: linear-gradient(150deg,#f8f5ef 0%,#efe7d6 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid rgba(201,169,97,0.12); }
-    .product-img img { max-height: 100%; max-width: 100%; object-fit: cover; }
+    .product-img { height: 240px; background: linear-gradient(150deg,#f8f5ef 0%,#efe7d6 100%); display: flex; align-items: flex-end; justify-content: center; overflow: hidden; border-bottom: 1px solid rgba(201,169,97,0.12); }
+    .product-img img { max-height: 92%; max-width: 72%; object-fit: contain; object-position: bottom; margin-bottom: 14px; filter: drop-shadow(0 12px 20px rgba(80,60,30,0.2)); transition: transform .4s; }
+    .product-card:hover .product-img img { transform: translateY(-4px) scale(1.03); }
     .ph-mark { text-align: center; line-height: 1.5; }
     .ph-mark .ph-logo { font-family: var(--serif); font-size: 17px; letter-spacing: 0.3em; color: var(--gold); display: block; }
     .ph-mark .ph-sub { font-size: 9px; letter-spacing: 0.28em; color: var(--text-light); text-transform: uppercase; margin-top: 8px; display: block; }
@@ -217,14 +225,14 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <span class="hero-eyebrow" data-i18n="brand_eyebrow">AEB TECHNOLOGY</span>
-    <h1 class="hero-title" data-i18n="idx_hero_title">分子設計から、<br>究極の浸透へ。</h1>
-    <p class="hero-subtitle" data-i18n="brand_p">DENBAが独自開発した分子コントロール技術により、全成分をナノレベルまで微粒子化。通常の1.8倍速で角層まで届けます。</p>
-    <div class="hero-actions">
-      <a href="#line" class="btn-primary" data-i18n="idx_hero_btn1">THE LINEを見る</a>
-      <a href="technology.html" class="btn-secondary" data-i18n="idx_hero_btn2">技術の詳細</a>
-    </div>
+  <div class="hero-video">
+    <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="images/hero-bg.jpg">
+      <source src="images/hero-bg.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
   </div>
 </section>
 
@@ -299,7 +307,7 @@
 
   <div class="line-grid">
     <a href="lotion.html" class="product-card">
-      <div class="product-img"><span class="ph-mark"><span class="ph-logo">DENBA</span><span class="ph-sub">Skincare</span></span></div>
+      <div class="product-img"><img src="images/bottle-lotion.png?v4" alt="ウォーターリバイタル ローション" loading="lazy"></div>
       <div class="product-info">
         <div class="product-name" data-i18n="p1_name">ウォーターリバイタル ローション</div>
         <div class="product-type" data-i18n="p1_type">化粧水</div>
@@ -307,7 +315,7 @@
       </div>
     </a>
     <a href="emulsion.html" class="product-card">
-      <div class="product-img"><span class="ph-mark"><span class="ph-logo">DENBA</span><span class="ph-sub">Skincare</span></span></div>
+      <div class="product-img"><img src="images/bottle-emulsion.png?v4" alt="ハリ弾力ケア エマルジョン" loading="lazy"></div>
       <div class="product-info">
         <div class="product-name" data-i18n="p2_name">ハリ弾力ケア エマルジョン</div>
         <div class="product-type" data-i18n="p2_type">乳液</div>
@@ -315,7 +323,7 @@
       </div>
     </a>
     <a href="cream.html" class="product-card">
-      <div class="product-img"><span class="ph-mark"><span class="ph-logo">DENBA</span><span class="ph-sub">Skincare</span></span></div>
+      <div class="product-img"><img src="images/bottle-cream.png?v4" alt="ハリ弾力ケア クリーム" loading="lazy"></div>
       <div class="product-info">
         <div class="product-name" data-i18n="p3_name">ハリ弾力ケア クリーム</div>
         <div class="product-type" data-i18n="p3_type">クリーム</div>
@@ -323,7 +331,7 @@
       </div>
     </a>
     <a href="serum.html" class="product-card">
-      <div class="product-img"><span class="ph-mark"><span class="ph-logo">DENBA</span><span class="ph-sub">Skincare</span></span></div>
+      <div class="product-img"><img src="images/bottle-serum.png?v4" alt="マルチディメンション エイジングケア セラム" loading="lazy"></div>
       <div class="product-info">
         <div class="product-name" data-i18n="p4_name">マルチディメンション エイジングケア セラム</div>
         <div class="product-type" data-i18n="p4_type">美容液</div>
@@ -399,6 +407,22 @@
 
 <script src="translations.js"></script>
 <script src="js/main.js"></script>
+<script>
+// ヒーローCG動画の自動再生（モバイルは軽量版に切替）
+(function(){
+  var v = document.getElementById('heroVideo');
+  if (!v) return;
+  v.muted = true;
+  if (window.matchMedia('(max-width:768px)').matches) {
+    var s = v.querySelector('source');
+    if (s) { s.src = 'images/hero-bg-mobile.mp4'; v.load(); }
+  }
+  var show = function(){ v.style.opacity = '1'; };
+  v.addEventListener('playing', show);
+  v.addEventListener('loadeddata', function(){ var p = v.play(); if (p) p.then(show).catch(function(){}); setTimeout(show, 2000); }, { once:true });
+  var p = v.play(); if (p) p.then(show).catch(function(){});
+})();
+</script>
 <script>
 // Enhanced demo cart for homepage
 function showCartDemo() {
